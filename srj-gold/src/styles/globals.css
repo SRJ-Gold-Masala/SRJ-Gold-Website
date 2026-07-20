@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --maroon:      #4A1320;
+  --maroon2:     #6B1E2E;
+  --gold:        #C9981A;
+  --gold-bright: #E0B428;
+  --gold-pale:   #FBF5E4;
+  --cream:       #F7F2E8;
+  --cream-dark:  #EDE3CC;
+  --ink:         #1A1209;
+  --muted:       #7A6A52;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #fff; color: var(--ink); }
+
+/* ── Animations ── */
+@keyframes srjRing   { from{opacity:0;transform:scale(0.2)} to{opacity:1;transform:scale(1)} }
+@keyframes srjLogo   { from{opacity:0;transform:scale(0.4) translateY(20px)} to{opacity:1;transform:scale(1) translateY(0)} }
+@keyframes srjWord   { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+@keyframes srjBar    { from{width:0} to{width:100%} }
+@keyframes srjPulse  { 0%,100%{box-shadow:0 0 28px rgba(201,152,26,.3)} 50%{box-shadow:0 0 56px rgba(201,152,26,.65)} }
+@keyframes srjFloat  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-13px)} }
+@keyframes waPulse   { 0%{transform:scale(1);opacity:0.6} 100%{transform:scale(1.6);opacity:0} }
+
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+/* ── Responsive grid utilities ── */
+.rg-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.rg-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.rg-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+.rg-footer { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
+
+@media (max-width: 768px) {
+  .rg-2      { grid-template-columns: 1fr; gap: 32px; }
+  .rg-3      { grid-template-columns: 1fr; gap: 16px; }
+  .rg-4      { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .rg-footer { grid-template-columns: 1fr; gap: 32px; }
+  .hide-mobile { display: none !important; }
+  .px-mobile  { padding-left: 20px !important; padding-right: 20px !important; }
+  .hero-text  { font-size: 36px !important; }
+  .hero-sub   { font-size: 12px !important; }
+}
+
+@media (max-width: 480px) {
+  .rg-4 { grid-template-columns: 1fr; }
+}
