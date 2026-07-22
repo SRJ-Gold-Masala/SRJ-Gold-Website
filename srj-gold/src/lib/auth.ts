@@ -24,24 +24,32 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
+        if (!credentials) return null;
+      
+        const { email, password } = credentials;
+      
         // For prototype / local dev: only the admin email works.
         // In production replace with bcrypt password check against DB.
         if (
-          credentials?.email === process.env.ADMIN_EMAIL &&
-          credentials?.password === process.env.ADMIN_PASSWORD
+          email === process.env.ADMIN_EMAIL &&
+          password === process.env.ADMIN_PASSWORD
         ) {
           const user = await db.user.findUnique({
-            where: { email: credentials.email },
+            where: { email },
           });
-          return user ?? {
-            id:    "admin",
-            name:  "Admin",
-            email: credentials.email,
-            role:  "ADMIN",
-          };
+      
+          return (
+            user ?? {
+              id: "admin",
+              name: "Admin",
+              email,
+              role: "ADMIN",
+            }
+          );
         }
+      
         return null;
-      },
+      }
     }),
   ],
   callbacks: {
