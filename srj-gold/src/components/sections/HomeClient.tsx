@@ -16,7 +16,6 @@ export function HomeClient({ products }: { products: Product[] }) {
   const [phase, setPhase] = useState<Phase>("splash");
 
   useEffect(() => {
-    // Only show splash once per browser session
     const seen = sessionStorage.getItem("srj_splash_seen");
     if (seen) {
       setPhase("ready");
@@ -33,16 +32,25 @@ export function HomeClient({ products }: { products: Product[] }) {
   if (phase === "splash") return <Splash />;
 
   return (
-    <div style={{ opacity: phase==="ready" ? 1 : 0, transition: phase==="ready" ? "opacity 0.7s ease" : "none" }}>
-      <Nav />
-      <HomeHero phase={phase} />
-      <StatsSection />
-      <FeaturesStrip />
-      <ProductGrid products={products} />
-      <ProcessSection />
-      <FounderNote />
-      <CtaBand />
-      <Footer />
+    // ── Key fix: background stays maroon during fade-in so no white flash ──
+    <div style={{
+      opacity:    phase === "ready" ? 1 : 0,
+      transition: phase === "ready" ? "opacity 0.5s ease" : "none",
+      background: "#4A1320", // maroon — matches hero, hides any white during transition
+      minHeight:  "100vh",
+    }}>
+      {/* Inner wrapper goes white once content renders */}
+      <div style={{ background:"#fff" }}>
+        <Nav />
+        <HomeHero phase={phase} />
+        <StatsSection />
+        <FeaturesStrip />
+        <ProductGrid products={products} />
+        <ProcessSection />
+        <FounderNote />
+        <CtaBand />
+        <Footer />
+      </div>
     </div>
   );
 }
