@@ -24,11 +24,11 @@ export function HomeClient({ products }: { products: Product[] }) {
       setPhase("ready");
       return;
     }
-    const t1 = setTimeout(() => setPhase("entering"), 3800);
+    const t1 = setTimeout(() => setPhase("entering"), 3300);
     const t2 = setTimeout(() => {
       setPhase("ready");
       sessionStorage.setItem("srj_splash_seen", "1");
-    }, 4600);
+    }, 3700);
     return () => { clearTimeout(t1); clearTimeout(t2); };
   }, []);
 
@@ -37,14 +37,24 @@ export function HomeClient({ products }: { products: Product[] }) {
     <div style={{ position:"fixed", inset:0, background:"#4A1320" }} />
   );
 
-  if (phase === "splash") return <Splash />;
-
   return (
     <div style={{
       // Outer stays maroon so during fade-in there is NO white flash
       background: "#4A1320",
       minHeight: "100vh",
     }}>
+      {phase !== "ready" && (
+        <div style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 9999,
+          opacity: phase === "splash" ? 1 : 0,
+          transition: "opacity 0.4s ease",
+          pointerEvents: "none",
+        }}>
+          <Splash />
+        </div>
+      )}
       <div
         style={{
           opacity:    phase === "ready" ? 1 : 0,

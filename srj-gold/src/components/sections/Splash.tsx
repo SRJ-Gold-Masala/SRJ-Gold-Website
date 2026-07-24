@@ -15,7 +15,7 @@ export function Splash() {
         @keyframes srjRing  { from{opacity:0;transform:scale(0.2)} to{opacity:1;transform:scale(1)} }
         @keyframes srjLogo  { from{opacity:0;transform:scale(0.4) translateY(20px)} to{opacity:1;transform:scale(1) translateY(0)} }
         @keyframes srjWord  { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
-        @keyframes srjBar   { from{width:0} to{width:100%} }
+        @keyframes srjBar   { from{transform:scaleX(0)} to{transform:scaleX(1)} }
         @keyframes srjPulse { 0%,100%{box-shadow:0 0 28px rgba(201,152,26,.3)} 50%{box-shadow:0 0 56px rgba(201,152,26,.65)} }
         /* Mobile ring sizes */
         @media(max-width:480px){
@@ -87,14 +87,16 @@ export function Splash() {
       {/* Loading bar */}
       <div style={{
         position:"absolute", bottom:54,
-        width:148, height:1.5,
+        width:148, height:2,
         background:"rgba(201,152,26,.15)",
         borderRadius:2, overflow:"hidden",
       }}>
         <div style={{
-          height:"100%",
+          width:"100%", height:"100%",
           background:"linear-gradient(90deg,#C9981A,#E0B428)",
-          animation:"srjBar 3.2s ease .5s both",
+          transformOrigin:"left center",
+          animation:"srjBar 2.6s cubic-bezier(0.2, 0.8, 0.4, 1) 0.3s forwards",
+          willChange:"transform",
         }} />
       </div>
     </div>
