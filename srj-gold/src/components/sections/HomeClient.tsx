@@ -14,10 +14,13 @@ import type { Phase, Product } from "@/types";
 
 export function HomeClient({ products }: { products: Product[] }) {
   const [phase, setPhase] = useState<Phase>("splash");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const seen = sessionStorage.getItem("srj_splash_seen");
     if (seen) {
+      // Skip splash entirely — go straight to ready, no flash
       setPhase("ready");
       return;
     }
@@ -25,22 +28,30 @@ export function HomeClient({ products }: { products: Product[] }) {
     const t2 = setTimeout(() => {
       setPhase("ready");
       sessionStorage.setItem("srj_splash_seen", "1");
-    }, 4700);
+    }, 4600);
     return () => { clearTimeout(t1); clearTimeout(t2); };
   }, []);
+
+  // Before JS hydrates, show nothing (server renders nothing for this component)
+  if (!mounted) return (
+    <div style={{ position:"fixed", inset:0, background:"#4A1320" }} />
+  );
 
   if (phase === "splash") return <Splash />;
 
   return (
-    // ── Key fix: background stays maroon during fade-in so no white flash ──
     <div style={{
-      opacity:    phase === "ready" ? 1 : 0,
-      transition: phase === "ready" ? "opacity 0.5s ease" : "none",
-      background: "#4A1320", // maroon — matches hero, hides any white during transition
-      minHeight:  "100vh",
+      // Outer stays maroon so during fade-in there is NO white flash
+      background: "#4A1320",
+      minHeight: "100vh",
     }}>
-      {/* Inner wrapper goes white once content renders */}
-      <div style={{ background:"#fff" }}>
+      <div
+        style={{
+          opacity:    phase === "ready" ? 1 : 0,
+          // Only transition when going ready, instant when entering
+          transition: phase === "ready" ? "opacity 0.4s ease" : "none",
+        }}
+      >
         <Nav />
         <HomeHero phase={phase} />
         <StatsSection />
