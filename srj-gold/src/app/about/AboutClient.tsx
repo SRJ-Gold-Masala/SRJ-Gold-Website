@@ -202,6 +202,29 @@ export function AboutClient() {
           </div>
         </div>
 
+        {/* ISO Certificates */}
+        <FadeIn delay={200}>
+          <div style={{ marginTop:32, background:"#fff", borderRadius:10, padding:"24px 28px", border:`0.5px solid ${C.creamDk}` }}>
+            <div style={{ fontFamily:sans, fontSize:10, fontWeight:500, letterSpacing:"0.14em", textTransform:"uppercase", color:C.muted, marginBottom:16 }}>
+              ISO Certifications
+              </div>
+              <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:16 }}>
+                {[
+                  { std:"ISO 9001:2015", name:"Quality Management System", cert:"UK-02-VS-02362", scope:"Suppliers of Dry Chillies & Spices Masala", expires:"17-02-2029" },
+                  { std:"ISO 22000:2018", name:"Food Safety Management System", cert:"UK-02-VS-02363", scope:"Suppliers of Dry Chillies & Spices Masala", expires:"17-02-2029" },
+                ].map(c=>(
+                <div key={c.cert} style={{ background:C.cream, borderRadius:8, padding:"18px", border:`0.5px solid ${C.creamDk}` }}>
+                  <div style={{ fontFamily:serif, fontSize:18, fontWeight:600, color:C.maroon, marginBottom:4 }}>{c.std}</div>
+                  <div style={{ fontFamily:sans, fontSize:12, fontWeight:500, color:C.ink, marginBottom:8 }}>{c.name}</div>
+                  <div style={{ fontFamily:sans, fontSize:11, color:C.muted, marginBottom:4 }}>Cert No: <strong style={{ color:C.ink }}>{c.cert}</strong></div>
+                  <div style={{ fontFamily:sans, fontSize:11, color:C.muted, marginBottom:4 }}>{c.scope}</div>
+                  <div style={{ fontFamily:sans, fontSize:10, color:C.gold, fontWeight:500 }}>Valid until {c.expires}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeIn>
+
         {/* Contact info */}
         <div style={{ background:C.maroon, padding:"64px 52px" }} className="about-pad">
           <div className="about-contact-grid">
