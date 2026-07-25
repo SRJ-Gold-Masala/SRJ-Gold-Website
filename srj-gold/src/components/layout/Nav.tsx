@@ -56,7 +56,7 @@ export function Nav() {
           </div>
           <div>
             <div style={{ fontFamily:serif, fontSize:18, fontWeight:600, color:C.goldBr, letterSpacing:"0.04em", lineHeight:1 }}>SRJ Gold</div>
-            <div style={{ fontFamily:sans, fontSize:9, color:"rgba(247,242,232,0.48)", letterSpacing:"0.12em", textTransform:"uppercase" }}>Spices</div>
+            <div style={{ fontFamily:sans, fontSize:9, color:"rgba(247,242,232,0.48)", letterSpacing:"0.12em", textTransform:"uppercase" }}>Masala</div>
           </div>
         </Link>
 

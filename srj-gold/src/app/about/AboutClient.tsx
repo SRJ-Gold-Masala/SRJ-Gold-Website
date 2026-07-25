@@ -93,7 +93,7 @@ export function AboutClient() {
             <FadeIn dir="left">
               <div style={{ fontFamily:sans, fontSize:10, fontWeight:500, letterSpacing:"0.14em", textTransform:"uppercase", color:C.gold, marginBottom:12 }}>Our Story</div>
               <h2 style={{ fontFamily:serif, fontSize:30, fontWeight:500, color:C.maroon, margin:"0 0 20px", lineHeight:1.2 }}>From one spice to a legacy</h2>
-              <p style={{ fontFamily:sans, fontSize:14, fontWeight:300, color:C.muted, lineHeight:1.9, marginBottom:16 }}>Established in 1981 in Byadgi, our journey began with a humble vision — to deliver pure, authentic flavours rooted in tradition. What started as a small-scale operation focused solely on dry ginger has grown into one of Karnataka's most respected names in the spice industry.</p>
+              <p style={{ fontFamily:sans, fontSize:14, fontWeight:300, color:C.muted, lineHeight:1.9, marginBottom:16 }}>Established in 1981 in Sagar, Karnataka, our journey began with a clear vision — to deliver pure, authentic flavours rooted in tradition. Starting with a strong focus on delivering high-quality spices — red chilli, dry ginger and beyond — we built our reputation on purity and consistency, growing into one of Karnataka's most respected names in the spice industry.</p>
               <p style={{ fontFamily:sans, fontSize:14, fontWeight:300, color:C.muted, lineHeight:1.9 }}>Over the decades, we expanded from dry ginger to becoming a trusted leader in Byadgi red chilli and other premium spices. From farms to kitchens across the country, we uphold the same values — purity, consistency, and trust.</p>
             </FadeIn>
             <FadeIn dir="right" delay={120}>
@@ -110,13 +110,13 @@ export function AboutClient() {
         <div style={{ background:C.cream, padding:"64px 52px", borderTop:`1px solid ${C.creamDk}`, borderBottom:`1px solid ${C.creamDk}` }} className="about-pad">
           <FadeIn>
             <div style={{ fontFamily:sans, fontSize:10, fontWeight:500, letterSpacing:"0.14em", textTransform:"uppercase", color:C.gold, marginBottom:12 }}>The Visionary</div>
-            <h2 style={{ fontFamily:serif, fontSize:30, fontWeight:500, color:C.maroon, margin:"0 0 32px" }}>Mr. B. Ghous Muhiddin</h2>
+            <h2 style={{ fontFamily:serif, fontSize:30, fontWeight:500, color:C.maroon, margin:"0 0 32px" }}>Mr. B. Gouse Mohiyuddin</h2>
           </FadeIn>
           <div className="about-founder-grid">
             <FadeIn dir="left" delay={80}>
               <div style={{ background:C.maroon, borderRadius:12, padding:"28px 24px", textAlign:"center" }}>
                 <div style={{ fontFamily:serif, fontSize:52, color:"rgba(201,152,26,0.3)", lineHeight:1, marginBottom:10 }}>B.G.M</div>
-                <div style={{ fontFamily:serif, fontSize:17, fontWeight:500, color:C.cream, marginBottom:6 }}>B. Ghous Muhiddin</div>
+                <div style={{ fontFamily:serif, fontSize:17, fontWeight:500, color:C.cream, marginBottom:6 }}>B. Gouse Mohiyuddin</div>
                 <div style={{ fontFamily:sans, fontSize:11, color:"rgba(247,242,232,0.5)", letterSpacing:"0.08em", textTransform:"uppercase" }}>Founder · 1981</div>
                 <div style={{ marginTop:18, paddingTop:18, borderTop:"1px solid rgba(201,152,26,0.15)" }}>
                   {["Visionary entrepreneur","Pioneer in spice trade","Champion of quality"].map(t=>(
@@ -129,7 +129,7 @@ export function AboutClient() {
             </FadeIn>
             <FadeIn dir="right" delay={120}>
               <div>
-                <p style={{ fontFamily:sans, fontSize:14, fontWeight:300, color:C.muted, lineHeight:1.9, marginBottom:16 }}>Our journey began with the vision of Mr. B. Ghous Muhiddin — a dedicated entrepreneur who laid the foundation of the business in 1981. Starting with limited resources, he focused solely on processing and supplying high-quality dry ginger, driven by a passion to bring the finest spices to the market.</p>
+                <p style={{ fontFamily:sans, fontSize:14, fontWeight:300, color:C.muted, lineHeight:1.9, marginBottom:16 }}>Our journey began with the vision of Mr. B. Gouse Mohiyuddin — a dedicated entrepreneur who laid the foundation of the business in 1981. Starting with limited resources, he focused solely on processing and supplying high-quality dry ginger, driven by a passion to bring the finest spices to the market.</p>
                 <p style={{ fontFamily:sans, fontSize:14, fontWeight:300, color:C.muted, lineHeight:1.9, marginBottom:16 }}>Through relentless hard work, honesty, and a deep understanding of the spice trade, Mr. Muhiddin steadily expanded the business. Under his leadership, the company evolved into a major industry player — recognized for premium dry ginger and its expertise in Byadgi red chilli, now our flagship product.</p>
                 <p style={{ fontFamily:sans, fontSize:14, fontWeight:300, color:C.muted, lineHeight:1.9 }}>His vision transformed a small local venture into a trusted name in the spice industry, inspiring the next generation to carry forward the legacy of quality, purity, and excellence.</p>
               </div>

@@ -70,7 +70,7 @@ export function Splash() {
           SRJ Gold
         </div>
         <div style={{ fontFamily:"var(--font-dm-sans),sans-serif", fontSize:11, color:"rgba(247,242,232,.48)", letterSpacing:"0.2em", textTransform:"uppercase", marginTop:5 }}>
-          Spices
+          Masala
         </div>
       </div>
 
