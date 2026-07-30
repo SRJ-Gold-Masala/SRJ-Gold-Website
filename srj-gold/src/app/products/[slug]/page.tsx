@@ -12,9 +12,55 @@ export async function generateStaticParams() {
   return products.map(p => ({ slug: p.slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug:string } }) {
-  const p = await db.product.findUnique({ where:{ slug: params.slug } });
-  return { title: p?.name ?? "Product" };
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const p = await db.product.findUnique({
+    where: { slug: params.slug },
+  });
+
+  if (!p) {
+    return {
+      title: "Product",
+    };
+  }
+
+  const imageUrl = `https://srjgoldmasala.com${p.imageUrl}`;
+
+  return {
+    title: `${p.name} | SRJ Gold Masala`,
+    description:
+      p.description ||
+      `Buy premium ${p.name} from SRJ Gold Masala. Stone-ground Indian spices with authentic flavour.`,
+
+    alternates: {
+      canonical: `https://srjgoldmasala.com/products/${p.slug}`,
+    },
+
+    openGraph: {
+      title: `${p.name} | SRJ Gold Masala`,
+      description:
+        p.description ||
+        `Premium ${p.name} by SRJ Gold Masala`,
+      url: `https://srjgoldmasala.com/products/${p.slug}`,
+      images: [
+        {
+          url: imageUrl,
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: `${p.name} | SRJ Gold Masala`,
+      description:
+        p.description ||
+        `Premium ${p.name}`,
+      images: [imageUrl],
+    },
+  };
 }
 
 export default async function ProductPage({ params }: { params: { slug:string } }) {

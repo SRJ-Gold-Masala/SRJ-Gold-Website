@@ -35,6 +35,25 @@ export function ProductDetail({ product: p }: { product:Product }) {
         .pd-grid { display:grid; grid-template-columns:1fr 1fr; gap:52px; padding:40px 52px; }
         @media(max-width:768px){ .pd-grid{ grid-template-columns:1fr; gap:28px; padding:20px 20px; } }
       `}</style>
+      <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Product",
+          name: p.name,
+          image: [
+            `https://srjgoldmasala.com${p.imageUrl}`,
+          ],
+          description: p.description,
+          brand: {
+            "@type": "Brand",
+            name: "SRJ Gold",
+          },
+          category: categoryLabel(p.category),
+        }),
+        }}
+        />
       <main style={{ background:"#fff", minHeight:"100vh" }}>
         <div style={{ padding:"16px 24px", borderBottom:`0.5px solid ${C.creamDk}` }}>
           <Link href="/products" style={{ fontFamily:sans, fontSize:12, color:C.muted, textDecoration:"none" }}>← Back to products</Link>
@@ -42,7 +61,7 @@ export function ProductDetail({ product: p }: { product:Product }) {
         <div className="pd-grid">
           {/* Image */}
           <div style={{ background:p.accentColor+"12", borderRadius:12, display:"flex", alignItems:"center", justifyContent:"center", minHeight:280, padding:20 }}>
-            <Image src={p.imageUrl} alt={p.name} width={300} height={320} style={{ objectFit:"contain", maxHeight:320, width:"auto" }} />
+            <Image src={p.imageUrl} alt={`SRJ Gold ${p.name} - Premium Indian Spice | ${categoryLabel(p.category)}`} width={300} height={320} style={{ objectFit:"contain", maxHeight:320, width:"auto" }} />
           </div>
           {/* Info + form */}
           <div>
