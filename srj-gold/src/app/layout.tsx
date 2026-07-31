@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     type:        "website",
     locale:      "en_IN",
-    url:         "https://srjgold.com",
+    url:         "https://srjgoldmasala.com",
     siteName:    "SRJ Gold Spices",
     title:       "SRJ Gold Spices — Taste Beyond the Limit",
     description: "Premium pure spices since 1981.",
@@ -53,7 +53,24 @@ export default function RootLayout({
       <body>
         <Providers>{children}</Providers>
         <WhatsAppButton />
-      </body>
+        
+        <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "SRJ Gold Spices",
+            url: "https://srjgoldmasala.com",
+            logo: "https://srjgoldmasala.com/images/logo.jpeg",
+            image: "https://srjgoldmasala.com/images/logo.jpeg",
+            description:
+            "Premium stone-ground, sun-dried spices from India's finest farms. Pure, unadulterated flavour since 1981.",
+          
+          }),
+        }}
+        />
+        </body>
     </html>
   );
 }
